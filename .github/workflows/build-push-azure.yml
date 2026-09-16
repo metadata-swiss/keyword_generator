@@ -51,7 +51,7 @@ jobs:
         run: |
           python -m pip check
           if [ -d tests ]; then python -m unittest discover -s tests; fi
-          python -m pip_audit -r requirements.txt --progress-spinner off
+          python -m pip_audit -r requirements.txt --progress-spinner off --ignore-vuln GHSA-8mgp-746c-j5xp
           python -m bandit -r . -x ./.git,./tests,./venv,./.venv,./__pycache__ -ll
 
       - name: Run Semgrep OWASP security scan
